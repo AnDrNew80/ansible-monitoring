@@ -1,0 +1,6 @@
+---
+- name: Restart Node Exporter
+  service:
+    name: node_exporter
+    state: restarted
+    daemon_reload: yes # Dodaj to, bo tworzysz nowy plik systemd

@@ -1,0 +1,10 @@
+# playbooks/setup_monitoring.yml
+- name: Setup monitoring stack
+  hosts: linux_nodes
+  become: yes
+
+  roles:
+    - prometheus
+    - grafana
+    - node_exporter
+

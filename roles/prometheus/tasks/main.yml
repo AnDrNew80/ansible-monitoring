@@ -1,0 +1,21 @@
+---
+- name: Instalacja Prometheus
+  apt:
+    name: prometheus
+    state: present
+    update_cache: yes
+
+- name: Skopiuj konfigurację Prometheus
+  copy:
+    src: "{{ playbook_dir }}/../files/prometheus.yml"
+    dest: /etc/prometheus/prometheus.yml
+    owner: prometheus
+    group: prometheus
+    mode: '0644'
+  notify: Restart Prometheus
+
+- name: Upewnij się, że usługa Prometheus działa
+  service:
+    name: prometheus
+    state: started
+    enabled: true

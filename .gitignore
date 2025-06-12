@@ -1,0 +1,7 @@
+# Python virtual environment
+venv/
+
+# Ansible
+*.retry
+*.log
+.ansible/
