@@ -1,0 +1,8 @@
+---
+- name: Zainstaluj i skonfiguruj Windows Exporter na maszynach Windows
+  hosts: windows_nodes
+  gather_facts: no
+  become: no
+
+  roles:
+    - windows_exporter

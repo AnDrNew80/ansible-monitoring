@@ -1,0 +1,17 @@
+---
+- name: Pobierz Windows Exporter MSI v0.30.7 
+  win_uri:
+    url: https://github.com/prometheus-community/windows_exporter/releases/download/v0.30.7/windows_exporter-0.30.7-amd64.msi
+    dest: C:\Temp\windows_exporter.msi
+
+- name: Zainstaluj Windows Exporter
+  win_package:
+    path: C:\Temp\windows_exporter.msi
+    state: present
+    arguments: /qn
+
+- name: Upewnij się, że usługa Windows Exporter działa i jest ustawiona na automatyczny start
+  win_service:
+    name: windows_exporter
+    state: started
+    start_mode: auto
